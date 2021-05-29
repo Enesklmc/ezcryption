@@ -6,6 +6,7 @@ const defaultOptions = {
   ]),
   salt: "salt",
 };
+Object.freeze(defaultOptions);
 
 interface AesOptionsType {
   options: {
@@ -29,11 +30,11 @@ const Aes = {
   ): Promise<any> => {
     try {
       const encoder = new TextEncoder();
-      const options = Object.assign(defaultOptions, overrideOptions);
+      const options = Object.assign({}, defaultOptions, overrideOptions);
 
       const key: CryptoKey = await passwordToCryptoKey(password, options.salt!);
 
-      const ciphertext = await subtle.encrypt(
+      const cipherArray = await subtle.encrypt(
         {
           name: "AES-CBC",
           iv: options.iv,
@@ -41,12 +42,11 @@ const Aes = {
         key,
         encoder.encode(message)
       );
-      console.log("ciphertext", ciphertext);
-      const buffer = new Uint8Array(ciphertext);
-      console.log(buffer);
-      const bufferToString = buffer.join("e");
+      const buffer = new Uint8Array(cipherArray);
+      const cipherText = buffer.join("e");
+      //console.log("Encrypt output: ", cipherText);
 
-      return bufferToString;
+      return cipherText;
     } catch (error) {
       console.log("Encryption Error ", error);
     }
@@ -65,7 +65,7 @@ const Aes = {
     { options: overrideOptions }: AesOptionsType = { options: {} }
   ): Promise<any> => {
     try {
-      const options = Object.assign(defaultOptions, overrideOptions);
+      const options = Object.assign({}, defaultOptions, overrideOptions);
       const decoder = new TextDecoder();
 
       const key: CryptoKey = await passwordToCryptoKey(password, options.salt!);
