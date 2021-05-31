@@ -1,4 +1,4 @@
-A text encryption library that has two functions:
+A text encryption library that has two functions currently:
 
 1. Easy encryption (makes letter "a" to letter "f")
 2. Encryption with a password(AES). Requires **node.js** version **15.0.0** and up.
