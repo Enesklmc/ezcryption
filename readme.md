@@ -47,7 +47,18 @@ import Aes from "./aes";
 const customIv = new Uint8Array([
   4, 214, 15, 14, 139, 254, 2, 1, 28, 19, 204, 14, 15, 0, 5, 6,
 ]);
+const customSalt = "custom salt";
 
-
+await Aes.encrypt("This is a secret message", "password", {
+  options: { iv: iv, salt: "my custom salt" },
+})
+    
+await Aes.decrypt(
+  "133e161e9e44e222e147e185e178e37e205e95e7e8e253e6e190e118e190e0e11e163e159e141e24e61e246e176e206e2e119e226e163",
+  "password",
+  {
+    options: { iv: iv, salt: "my custom salt" },
+  }
+)
 ```
 
