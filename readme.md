@@ -4,16 +4,19 @@ A text encryption library has two functions:
 2. Encryption with a password(AES). Requires **node.js** version **15.0.0** and up.
 
 ## Installation
-------
 ```
 npm install ezcryption
 ```
 
 ## Usage
-------
 ### Easy encryption
+```js
+import hello from 'hello';
+```
 
-### Easy encryption
+------
+
+### Encryption with a password(AES)
 ```js
 import hello from 'hello';
 ```
