@@ -9,16 +9,23 @@ npm install ezcryption
 ```
 
 ## Usage
+
 ### Easy encryption
-```jsx
-import hello from 'hello';
+```js
+import Spoiler from "./spoiler";
+
+Spoiler.encrypt("This is a secret message"); // Ymnx%25nx%25f%25xjhwjy%25rjxxflj
+Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj") // This is a secret message
 ```
 
 ------
 
 ### Encryption with a password(AES)
 ```js
-import hello from 'hello';
+import Spoiler from "./spoiler";
+Aes.encrypt("This is a secret message", "password")
+Spoiler.encrypt("This is a secret message"); // Ymnx%25nx%25f%25xjhwjy%25rjxxflj
+Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj") // This is a secret message
 ```
 
 
