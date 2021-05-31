@@ -12,7 +12,7 @@ npm install ezcryption
 
 ### Easy encryption
 ```js
-import Spoiler from "./spoiler";
+import Spoiler from "ezcryption/src/spoiler";
 
 Spoiler.encrypt("This is a secret message"); // Ymnx%25nx%25f%25xjhwjy%25rjxxflj
 Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj") // This is a secret message
@@ -23,19 +23,25 @@ Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj") // This is a secret message
 ### Encryption with a password(AES)
 Returns a promise.
 ```js
-import Spoiler from "./spoiler";
+import Aes from "ezcryption/src/aes";
 
-Aes.encrypt("This is a secret message", "password"); // 163e231e179e74e123e207e37e34e112e154e33e98e82e216e36e56e211e181e173e232e238e10e81e134e207e99e68e193e98e215e248e166
-Aes.decrypt(
-      "163e231e179e74e123e207e37e34e112e154e33e98e82e216e36e56e211e181e173e232e238e10e81e134e207e99e68e193e98e215e248e166",
-      "password"
-    ); // This is a secret message
+async function myFunction() {
+  const encrypted = await Aes.encrypt("This is a secret message", "password");
+  // 163e231e179e74e123e207e37e34e112e154e33e98e82e216e36e56e211e181e173e232e238e10e81e134e207e99e68e193e98e215e248e166
+
+  const decrypted = Aes.decrypt(
+    "163e231e179e74e123e207e37e34e112e154e33e98e82e216e36e56e211e181e173e232e238e10e81e134e207e99e68e193e98e215e248e166",
+    "password"
+  ); // This is a secret message
+}
 ```
 
 # Optional
 These options are not required but for more flexibility.
 
 ### Encryption with a password(AES) options:
+
+Add object as a third parameter `{options:{iv: customIv, salt: customSalt}}`
 
 **salt:** A string for PBKDF2(key derivation function)  
 **iv:** Initialization vector for Aes. An array that contains 16 integer between 0 to 255 value range
@@ -49,16 +55,18 @@ const customIv = new Uint8Array([
 ]);
 const customSalt = "custom salt";
 
-await Aes.encrypt("This is a secret message", "password", {
-  options: { iv: iv, salt: customSalt },
-})
-    
-await Aes.decrypt(
-  "133e161e9e44e222e147e185e178e37e205e95e7e8e253e6e190e118e190e0e11e163e159e141e24e61e246e176e206e2e119e226e163",
-  "password",
-  {
-    options: { iv: iv, salt: customSalt },
-  }
-)
+async function myFunction() {
+  const encrypted = await Aes.encrypt("This is a secret message", "password", {
+    options: { iv: customIv, salt: customSalt },
+  }); // 78e173e11e207e148e208e76e35e47e68e75e19e93e55e76e57e111e136e150e77e44e89e69e104e110e131e196e154e32e22e39e220
+
+  const decrypted = await Aes.decrypt(
+    "78e173e11e207e148e208e76e35e47e68e75e19e93e55e76e57e111e136e150e77e44e89e69e104e110e131e196e154e32e22e39e220",
+    "password",
+    {
+      options: { iv: customIv, salt: customSalt },
+    }
+  ); // This is a secret message
+}
 ```
 
