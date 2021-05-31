@@ -1,7 +1,7 @@
 A text encryption library that has two functions currently:
 
-1. Easy encryption (makes letter "a" to letter "f")
-2. Encryption with a password(AES). Requires **node.js** version **15.0.0** and up.
+1. Easy encryption (makes letter "a" to letter "f".)
+2. Encryption with a password(AES) (Requires **node.js** version **15.0.0** and up.)
 
 # Installation
 ```
@@ -32,4 +32,10 @@ Aes.decrypt(
 ```
 
 # Optional
+These options are not required but for more flexibility.
+
+### Encryption with a password(AES) options:
+
+salt: A string for PBKDF2(key derivation function)
+iv: Initialization vector for Aes. An array that contains 16 integer between 0 to 255 value range
 
