@@ -3,14 +3,14 @@ A text encryption library that has two functions:
 1. Easy encryption (makes letter "a" to letter "f")
 2. Encryption with a password(AES). Requires **node.js** version **15.0.0** and up.
 
-## Installation
+# Installation
 ```
 npm install ezcryption
 ```
 
-## Usage
+# Usage
 
-#### Easy encryption
+### Easy encryption
 ```js
 import Spoiler from "./spoiler";
 
