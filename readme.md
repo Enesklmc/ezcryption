@@ -10,7 +10,7 @@ npm install ezcryption
 
 ## Usage
 
-### Easy encryption
+#### Easy encryption
 ```js
 import Spoiler from "./spoiler";
 
