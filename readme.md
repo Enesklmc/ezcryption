@@ -21,6 +21,7 @@ Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj") // This is a secret message
 ------
 
 ### Encryption with a password(AES)
+Returns a promise.
 ```js
 import Spoiler from "./spoiler";
 
@@ -38,4 +39,15 @@ These options are not required but for more flexibility.
 
 **salt:** A string for PBKDF2(key derivation function)  
 **iv:** Initialization vector for Aes. An array that contains 16 integer between 0 to 255 value range
+
+To apply:  
+```js
+import Aes from "./aes";
+
+const customIv = new Uint8Array([
+  4, 214, 15, 14, 139, 254, 2, 1, 28, 19, 204, 14, 15, 0, 5, 6,
+]);
+
+
+```
 
