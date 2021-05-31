@@ -40,7 +40,7 @@ These options are not required but for more flexibility.
 **salt:** A string for PBKDF2(key derivation function)  
 **iv:** Initialization vector for Aes. An array that contains 16 integer between 0 to 255 value range
 
-To apply:  
+Example:  
 ```js
 import Aes from "./aes";
 
