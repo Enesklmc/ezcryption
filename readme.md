@@ -10,7 +10,7 @@ npm install ezcryption
 
 ## Usage
 ### Easy encryption
-```js
+```jsx
 import hello from 'hello';
 ```
 
