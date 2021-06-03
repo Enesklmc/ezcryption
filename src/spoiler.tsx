@@ -5,11 +5,9 @@ const Spoiler = {
    * @return {string} Returns an encrypted text.
    */
   encrypt: (message: string, offset: number = 5) => {
-    const messageArray: Array<string> = message.split("");
-    const messageArrayMap: Array<number> = messageArray.map((char: string) =>
-      char.charCodeAt(0)
-    );
-    const messageArrayMaptoOffset: Array<string> = messageArrayMap.map(
+    const charCodes = stringToCharCodes(message);
+
+    const messageArrayMaptoOffset: Array<string> = charCodes.map(
       (index: number) => String.fromCharCode(index + offset)
     );
 
@@ -23,16 +21,22 @@ const Spoiler = {
    */
   decrypt: (encryptedMessage: string, offset: number = 5) => {
     const decodedMessage = decodeURIComponent(encryptedMessage);
-    const encryptedMessageArray: Array<string> = decodedMessage.split("");
-    const messageArrayMap: Array<number> = encryptedMessageArray.map(
-      (char: string) => char.charCodeAt(0)
-    );
+    const charCodes = stringToCharCodes(decodedMessage);
 
-    const messageArrayMaptoOffset: Array<string> = messageArrayMap.map(
+    const messageArrayMaptoOffset: Array<string> = charCodes.map(
       (index: number) => String.fromCharCode(index - offset)
     );
+
     return messageArrayMaptoOffset.join("");
   },
 };
 
 export default Spoiler;
+
+function stringToCharCodes(message: string): Array<number> {
+  const messageSplit: Array<string> = message.split("");
+  const charCodes: Array<number> = messageSplit.map((char: string) =>
+    char.charCodeAt(0)
+  );
+  return charCodes;
+}

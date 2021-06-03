@@ -4,6 +4,7 @@ A text encryption library that has two functions currently:
 2. **Encryption with a password(AES)** (Requires **node.js** version **15.0.0** and up.)
 
 # Installation
+
 ```
 npm install ezcryption
 ```
@@ -11,19 +12,22 @@ npm install ezcryption
 # Usage
 
 ### Easy encryption
+
 ```js
-import Spoiler from "ezcryption/src/spoiler";
+import Spoiler from "ezcryption/dist/spoiler";
 
 Spoiler.encrypt("This is a secret message"); // Ymnx%25nx%25f%25xjhwjy%25rjxxflj
-Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj") // This is a secret message
+Spoiler.decrypt("Ymnx%25nx%25f%25xjhwjy%25rjxxflj"); // This is a secret message
 ```
 
-------
+---
 
 ### Encryption with a password(AES)
+
 Returns a promise.
+
 ```js
-import Aes from "ezcryption/src/aes";
+import Aes from "ezcryption/dist/aes";
 
 async function myFunction() {
   const encrypted = await Aes.encrypt("This is a secret message", "password");
@@ -37,6 +41,7 @@ async function myFunction() {
 ```
 
 # Optional
+
 These options are not required but for more flexibility.
 
 ### Encryption with a password(AES) options:
@@ -44,9 +49,10 @@ These options are not required but for more flexibility.
 Add an object as a third parameter `{options:{iv: customIv, salt: customSalt}}`
 
 - **iv:** Initialization vector for Aes. An array that contains 16 integer between 0 to 255 value range
-- **salt:** A string for PBKDF2(key derivation function)  
+- **salt:** A string for PBKDF2(key derivation function)
 
-Example:  
+Example:
+
 ```js
 import Aes from "./aes";
 
@@ -69,4 +75,3 @@ async function myFunction() {
   ); // This is a secret message
 }
 ```
-

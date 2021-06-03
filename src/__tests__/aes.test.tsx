@@ -1,12 +1,13 @@
 const iv = new Uint8Array([
   4, 214, 15, 14, 139, 254, 2, 1, 28, 19, 204, 14, 15, 0, 5, 6,
 ]);
-import Aes from "./aes";
+import Aes from "../../dist/aes";
 
 /*
 Without any option
 */
 test("Aes encryption (no options)", async () => {
+  //@ts-ignore
   expect(await Aes.encrypt("This is a secret message", "password")).toBe(
     "163e231e179e74e123e207e37e34e112e154e33e98e82e216e36e56e211e181e173e232e238e10e81e134e207e99e68e193e98e215e248e166"
   );
@@ -14,6 +15,7 @@ test("Aes encryption (no options)", async () => {
 
 test("Aes decryption (no options)", async () => {
   expect(
+    //@ts-ignore
     await Aes.decrypt(
       "163e231e179e74e123e207e37e34e112e154e33e98e82e216e36e56e211e181e173e232e238e10e81e134e207e99e68e193e98e215e248e166",
       "password"
@@ -77,20 +79,20 @@ with given Salt and Initialization vector
 test("Aes encryption (with salt and Initialization vector)", async () => {
   expect(
     await Aes.encrypt("This is a secret message", "password", {
-      options: { iv: iv, salt: "my custom salt" },
+      options: { iv: iv, salt: "custom salt" },
     })
   ).toBe(
-    "133e161e9e44e222e147e185e178e37e205e95e7e8e253e6e190e118e190e0e11e163e159e141e24e61e246e176e206e2e119e226e163"
+    "78e173e11e207e148e208e76e35e47e68e75e19e93e55e76e57e111e136e150e77e44e89e69e104e110e131e196e154e32e22e39e220"
   );
 });
 
 test("Aes decryption (with salt and Initialization vector)", async () => {
   expect(
     await Aes.decrypt(
-      "133e161e9e44e222e147e185e178e37e205e95e7e8e253e6e190e118e190e0e11e163e159e141e24e61e246e176e206e2e119e226e163",
+      "78e173e11e207e148e208e76e35e47e68e75e19e93e55e76e57e111e136e150e77e44e89e69e104e110e131e196e154e32e22e39e220",
       "password",
       {
-        options: { iv: iv, salt: "my custom salt" },
+        options: { iv: iv, salt: "custom salt" },
       }
     )
   ).toBe("This is a secret message");

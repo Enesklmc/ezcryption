@@ -1,4 +1,4 @@
-import Spoiler from "./spoiler";
+import Spoiler from "../spoiler";
 
 test("Spoiler encryption: ", async () => {
   expect(Spoiler.encrypt("This is a secret message")).toBe(

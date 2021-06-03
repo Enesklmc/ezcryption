@@ -1,17 +1,25 @@
 {
   "name": "ezcryption",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.2",
+  "description": "An encryption/decryption library.",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Enesklmc/ezcryption.git"
   },
   "keywords": [
-    "aes"
+    "encryption",
+    "decryption",
+    "hide spoiler",
+    "aes",
+    "crypto",
+    "javascript",
+    "webcrypto",
+    "nodejs"
   ],
   "author": "Enes Kalemci",
   "license": "GPL-3.0-or-later",
