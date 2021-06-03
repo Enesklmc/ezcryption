@@ -54,7 +54,7 @@ Add an object as a third parameter `{options:{iv: customIv, salt: customSalt}}`
 Example:
 
 ```js
-import Aes from "./aes";
+import Aes from "ezcryption/dist/aes";
 
 const customIv = new Uint8Array([
   4, 214, 15, 14, 139, 254, 2, 1, 28, 19, 204, 14, 15, 0, 5, 6,
